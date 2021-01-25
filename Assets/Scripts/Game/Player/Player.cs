@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Kit;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +18,9 @@ namespace Game
 		public float MoveSpeed = 10.0f;
 		public float MoveTime = 2.0f;
 		public float SlideSpeed = 10.0f;
-		public float SlideTime = 0.5f;
+		public float FlipTime = 0.5f;
 
+		public Quaternion Gravity { get; private set; } = Quaternion.identity;
 		public Vector3 StartPosition { get; private set; }
 		public Bounds Bounds { get; private set; }
 		public bool IsMoving { get; private set; }
@@ -61,41 +63,58 @@ namespace Game
 
 		public void Slide(float movement)
 		{
-			transform.Translate(Vector3.left * (movement * Time.deltaTime), Space.World);
+			transform.position += Gravity * Vector3.left * (movement * Time.deltaTime);
 		}
 
 		public void Flip(FlipDirection direction)
 		{
+			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
+			{
+				if (Mathf.Abs((Gravity * transform.position).x) > 1.9f)
+					FlipGravity(direction);
+			}
+
 			float angle = 90.0f;
-			Vector3 vector = Vector3.zero;
+			Vector3 rotation = Vector3.zero;
 			switch (direction)
 			{
 				case FlipDirection.Left:
-					vector = new Vector3(0, 0, angle);
+					rotation = new Vector3(0, 0, angle);
 					break;
 
 				case FlipDirection.Right:
-					vector = new Vector3(0, 0, -angle);
+					rotation = new Vector3(0, 0, -angle);
 					break;
 
 				case FlipDirection.Forward:
-					vector = new Vector3(angle, 0, 0);
+					rotation = new Vector3(angle, 0, 0);
 					break;
 
 				case FlipDirection.Backward:
-					vector = new Vector3(-angle, 0, 0);
+					rotation = new Vector3(-angle, 0, 0);
 					break;
 			}
 
-			Vector3 extents = Quaternion.Euler(vector) * transform.rotation * Bounds.extents;
-			transform.DOMoveY(Mathf.Abs(extents.y), SlideTime);
-			transform.DOBlendableRotateBy(vector, SlideTime);
+			Vector3 extents = Quaternion.Euler(rotation) * transform.rotation * Bounds.extents;
+			Debug.Log(extents);
+			
+			transform.DOMoveY(Mathf.Abs(extents.y), FlipTime);
+			transform.DOBlendableRotateBy(rotation, FlipTime);
+		}
+
+		protected virtual void FlipGravity(FlipDirection direction)
+		{
+			if (direction == FlipDirection.Left)
+				Gravity *= Quaternion.Euler(new Vector3(0, 0, -90));
+			else if (direction == FlipDirection.Right)
+				Gravity *= Quaternion.Euler(new Vector3(0, 0, 90));
+			Debug.Log($"Gravity {direction}: { Gravity.eulerAngles}");
 		}
 
 		protected virtual void Update()
 		{
 			if (moveSpeed > 0)
-				transform.Translate(Vector3.forward * (moveSpeed * Time.deltaTime), Space.World);
+				transform.position += Vector3.forward * (moveSpeed * Time.deltaTime);
 		}
 	}
 }

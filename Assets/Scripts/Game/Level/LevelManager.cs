@@ -3,6 +3,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Linq;
 using Kit;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -15,6 +16,7 @@ namespace Game
 
 	public class LevelManager: Singleton<LevelManager>
 	{
+		public CameraManager Camera;
 		public HumanPlayer HumanPlayer;
 		public AIPlayer[] AIPlayers;
 		public float EndDelay = 2.0f;
@@ -45,7 +47,7 @@ namespace Game
 			foreach (Player player in AllPlayers)
 				player.StopMoving();
 			State = LevelState.Ended;
-			ControlHelper.Delay(EndDelay, () => SceneDirector.FadeOut());
+			ControlHelper.Delay(EndDelay, () => SceneDirector.ReloadScene());
 		}
 
 		public IEnumerable<Player> AllPlayers => AIPlayers.Union(EnumerableExtensions.One((Player) HumanPlayer));

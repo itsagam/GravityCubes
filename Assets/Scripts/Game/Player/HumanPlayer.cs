@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Game
@@ -38,6 +39,19 @@ namespace Game
 					Flip(FlipDirection.Backward);
 			}
 #endif
+		}
+
+		protected override void FlipGravity(FlipDirection direction)
+		{
+			base.FlipGravity(direction);
+			Vector3 rotation = Vector3.zero;
+			
+			if (direction == FlipDirection.Left)
+				rotation = new Vector3(0, 0, -90);
+			else if (direction == FlipDirection.Right)
+				rotation = new Vector3(0, 0, 90);
+
+			LevelManager.Instance.Camera.transform.DOBlendableRotateBy(rotation, FlipTime);
 		}
 	}
 }
