@@ -14,7 +14,7 @@ namespace Game
 
 		protected virtual void HandleInput()
 		{
-			if (LevelManager.Instance.State != LevelState.Playing)
+			if (LevelManager.Instance.State != LevelState.Playing || !IsMoving)
 				return;
 
 #if UNITY_EDITOR

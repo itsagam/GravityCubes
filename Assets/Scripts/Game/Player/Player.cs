@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Kit;
 using UnityEngine;
 
 namespace Game
@@ -48,6 +49,12 @@ namespace Game
 		{
 			IsMoving = false;
 			DOTween.To(value => moveSpeed = value, moveSpeed, 0, MoveTime);
+		}
+
+		public void StopMovingImmediate()
+		{
+			IsMoving = false;
+			moveSpeed = 0;
 		}
 
 		public void SlideLeft()
