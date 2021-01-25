@@ -33,10 +33,18 @@ namespace Game
 			get
 			{
 				Vector3 playerPosition = playerTransform.position;
-				//Vector3 playerPosition = player.Gravity * playerTransform.position;
-				Vector3 nextPosition = new Vector3(playerPosition.x, initialY, playerPosition.z - Distance);
+				float gravity = player.Gravity.eulerAngles.z;
+				Vector3 nextPosition = Vector3.zero;
+				if (gravity == 0)
+					nextPosition = new Vector3(playerPosition.x, 3.0f);
+				else if (gravity == 180)
+					nextPosition = new Vector3(playerPosition.x, 1.0f);
+				else if (gravity == 90)
+					nextPosition = new Vector3(-0.5f, playerPosition.y);
+				else if (gravity == 270)
+					nextPosition = new Vector3(0.5f, playerPosition.y);
+				nextPosition.z = playerPosition.z - Distance;
 				return nextPosition;
-				//return player.Gravity * nextPosition;
 			}
 		}
 	}

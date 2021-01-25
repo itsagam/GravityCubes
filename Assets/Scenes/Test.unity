@@ -266,7 +266,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 8.48
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1146,6 +1146,7 @@ MonoBehaviour:
   MoveTime: 2
   SlideSpeed: 5
   FlipTime: 0.5
+  FlipDistance: 1
 --- !u!54 &995091339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1597,6 +1598,7 @@ MonoBehaviour:
   MoveTime: 2
   SlideSpeed: 5
   FlipTime: 0.5
+  FlipDistance: 1
 --- !u!54 &1761479826
 Rigidbody:
   m_ObjectHideFlags: 0
