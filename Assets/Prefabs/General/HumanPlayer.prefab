@@ -127,8 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   MoveTime: 2
-  SlideSpeed: 5
+  SlideSpeed: 7.5
   FlipTime: 0.5
   FlipDistance: 1
   FlipSound: {fileID: 8300000, guid: eae2f63774100184ba24ad621042bf96, type: 3}
   FlipGravitySound: {fileID: 8300000, guid: 069512ae06fb0354194a12e44c1bc31b, type: 3}
+  FlickGesture: {fileID: 0}
+  TransformGesture: {fileID: 0}

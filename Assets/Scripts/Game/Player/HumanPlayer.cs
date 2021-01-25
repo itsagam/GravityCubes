@@ -1,5 +1,8 @@
+using System;
 using DG.Tweening;
 using Kit;
+using TouchScript.Gestures;
+using TouchScript.Gestures.TransformGestures;
 using UnityEngine;
 
 namespace Game
@@ -9,6 +12,48 @@ namespace Game
 		public AudioClip FlipSound;
 		public AudioClip FlipGravitySound;
 
+		public FlickGesture FlickGesture;
+		public ScreenTransformGesture TransformGesture;
+
+		protected override void Awake()
+		{
+			base.Awake();
+			TransformGesture.Transformed += OnTransformed;
+			FlickGesture.Flicked += OnFlicked;
+		}
+
+		protected void OnTransformed(object sender, EventArgs e)
+		{
+			if (! CanInput)
+				return;
+			
+			if (TransformGesture.DeltaPosition.x > 0)
+				SlideRight();
+			else if (TransformGesture.DeltaPosition.x < 0)
+				SlideLeft();
+		}
+
+		protected void OnFlicked(object sender, EventArgs e)
+		{
+			if (! CanInput)
+				return;
+
+			if (Mathf.Abs(FlickGesture.ScreenFlickVector.x) > Mathf.Abs(FlickGesture.ScreenFlickVector.y))
+			{
+				if (FlickGesture.ScreenFlickVector.x >= 0)
+					Flip(FlipDirection.Right);
+				else
+					Flip(FlipDirection.Left);
+			}
+			else
+			{
+				if (FlickGesture.ScreenFlickVector.y >= 0)
+					Flip(FlipDirection.Forward);
+				else
+					Flip(FlipDirection.Backward);
+			}
+		}
+
 		protected override void Update()
 		{
 			HandleInput();
@@ -17,7 +62,7 @@ namespace Game
 
 		protected virtual void HandleInput()
 		{
-			if (LevelManager.Instance.State != LevelState.Playing || !IsMoving)
+			if (! CanInput)
 				return;
 
 #if UNITY_EDITOR
@@ -56,5 +101,7 @@ namespace Game
 			LevelManager.Instance.Camera.transform.DORotate(Gravity.eulerAngles, FlipTime);
 			AudioManager.Play(FlipGravitySound);
 		}
+
+		public bool CanInput => LevelManager.Instance.State == LevelState.Playing && IsMoving;
 	}
 }

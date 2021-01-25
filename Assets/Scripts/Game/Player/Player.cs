@@ -59,17 +59,17 @@ namespace Game
 
 		public void SlideLeft()
 		{
-			Slide(SlideSpeed);
+			Slide(-SlideSpeed);
 		}
 
 		public void SlideRight()
 		{
-			Slide(-SlideSpeed);
+			Slide(SlideSpeed);
 		}
 
 		public void Slide(float movement)
 		{
-			transform.position += Gravity * Vector3.left * (movement * Time.deltaTime);
+			transform.position += Gravity * Vector3.right * (movement * Time.deltaTime);
 		}
 
 		public virtual void Flip(FlipDirection direction)
