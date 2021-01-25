@@ -1,11 +1,14 @@
-using System;
 using DG.Tweening;
+using Kit;
 using UnityEngine;
 
 namespace Game
 {
 	public class HumanPlayer: Player
 	{
+		public AudioClip FlipSound;
+		public AudioClip FlipGravitySound;
+
 		protected override void Update()
 		{
 			HandleInput();
@@ -41,10 +44,17 @@ namespace Game
 #endif
 		}
 
+		public override void Flip(FlipDirection direction)
+		{
+			base.Flip(direction);
+			AudioManager.Play(FlipSound);
+		}
+
 		protected override void FlipGravity(Vector3 rotation)
 		{
 			base.FlipGravity(rotation);
 			LevelManager.Instance.Camera.transform.DORotate(Gravity.eulerAngles, FlipTime);
+			AudioManager.Play(FlipGravitySound);
 		}
 	}
 }

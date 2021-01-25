@@ -1749,6 +1749,7 @@ MonoBehaviour:
   - {fileID: 995091338}
   EndDelay: 2
   LevelEnd: {fileID: 493530304}
+  Music: {fileID: 8300000, guid: b90284eb5b6ff7045acb6dee2e885a75, type: 3}
   State: 0
 --- !u!4 &1093159084
 Transform:
@@ -2400,6 +2401,8 @@ MonoBehaviour:
   SlideSpeed: 5
   FlipTime: 0.5
   FlipDistance: 1
+  FlipSound: {fileID: 8300000, guid: eae2f63774100184ba24ad621042bf96, type: 3}
+  FlipGravitySound: {fileID: 8300000, guid: 069512ae06fb0354194a12e44c1bc31b, type: 3}
 --- !u!54 &1761479826
 Rigidbody:
   m_ObjectHideFlags: 0

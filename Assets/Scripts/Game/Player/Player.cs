@@ -72,7 +72,7 @@ namespace Game
 			transform.position += Gravity * Vector3.left * (movement * Time.deltaTime);
 		}
 
-		public void Flip(FlipDirection direction)
+		public virtual void Flip(FlipDirection direction)
 		{
 			float angle = 90.0f;
 			Vector3 rotation = Vector3.zero;

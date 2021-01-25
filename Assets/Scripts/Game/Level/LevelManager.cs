@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Linq;
 using Kit;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
 namespace Game
 {
@@ -21,6 +19,7 @@ namespace Game
 		public AIPlayer[] AIPlayers;
 		public float EndDelay = 2.0f;
 		public EndVolume LevelEnd;
+		public AudioClip Music;
 
 		public LevelState State = LevelState.Waiting;
 
@@ -34,6 +33,7 @@ namespace Game
 			if (State != LevelState.Waiting)
 				return;
 
+			AudioManager.PlayMusic(Music);
 			foreach (Player player in AllPlayers)
 				player.StartMoving();
 			State = LevelState.Playing;
