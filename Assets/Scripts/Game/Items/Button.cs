@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Kit;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ namespace Game
 	public class Button: MonoBehaviour
 	{
 		public float PressTime = 0.5f;
+		public AudioClip PressSound;
 		public UnityEvent OnPressed;
 		public BoxCollider Collider { get; protected set; }
 		public Bounds Bounds { get; private set; }
@@ -30,6 +32,7 @@ namespace Game
 			movement = transform.rotation * movement;
 			transform.DOBlendableMoveBy(movement, PressTime);
 			OnPressed?.Invoke();
+			AudioManager.Play(PressSound);
 		}
 	}
 }
