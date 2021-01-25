@@ -41,17 +41,10 @@ namespace Game
 #endif
 		}
 
-		protected override void FlipGravity(FlipDirection direction)
+		protected override void FlipGravity(Vector3 rotation)
 		{
-			base.FlipGravity(direction);
-			Vector3 rotation = Vector3.zero;
-			
-			if (direction == FlipDirection.Left)
-				rotation = new Vector3(0, 0, -90);
-			else if (direction == FlipDirection.Right)
-				rotation = new Vector3(0, 0, 90);
-
-			LevelManager.Instance.Camera.transform.DOBlendableRotateBy(rotation, FlipTime);
+			base.FlipGravity(rotation);
+			LevelManager.Instance.Camera.transform.DORotate(Gravity.eulerAngles, FlipTime);
 		}
 	}
 }

@@ -1,7 +1,5 @@
 using DG.Tweening;
-using Kit;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game
 {
@@ -19,6 +17,7 @@ namespace Game
 		public float MoveTime = 2.0f;
 		public float SlideSpeed = 10.0f;
 		public float FlipTime = 0.5f;
+		public float FlipDistance = 1.0f;
 
 		public Quaternion Gravity { get; private set; } = Quaternion.identity;
 		public Vector3 StartPosition { get; private set; }
@@ -68,12 +67,6 @@ namespace Game
 
 		public void Flip(FlipDirection direction)
 		{
-			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
-			{
-				if (Mathf.Abs((Gravity * transform.position).x) > 1.9f)
-					FlipGravity(direction);
-			}
-
 			float angle = 90.0f;
 			Vector3 rotation = Vector3.zero;
 			switch (direction)
@@ -94,27 +87,30 @@ namespace Game
 					rotation = new Vector3(-angle, 0, 0);
 					break;
 			}
+			transform.DOBlendableRotateBy(Gravity * rotation, FlipTime);
 
-			Vector3 extents = Quaternion.Euler(rotation) * transform.rotation * Bounds.extents;
-			Debug.Log(extents);
-			
-			transform.DOMoveY(Mathf.Abs(extents.y), FlipTime);
-			transform.DOBlendableRotateBy(rotation, FlipTime);
+			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
+			{
+				Vector3 end = Gravity * new Vector3(direction == FlipDirection.Left ? -FlipDistance : FlipDistance, 0, 0);
+				if (Physics.Linecast(transform.position, transform.position + end, out RaycastHit hit))
+					FlipGravity(-rotation);
+			}
 		}
 
-		protected virtual void FlipGravity(FlipDirection direction)
+		protected virtual void FlipGravity(Vector3 rotation)
 		{
-			if (direction == FlipDirection.Left)
-				Gravity *= Quaternion.Euler(new Vector3(0, 0, -90));
-			else if (direction == FlipDirection.Right)
-				Gravity *= Quaternion.Euler(new Vector3(0, 0, 90));
-			Debug.Log($"Gravity {direction}: { Gravity.eulerAngles}");
+			Gravity *= Quaternion.Euler(rotation);
 		}
 
 		protected virtual void Update()
 		{
 			if (moveSpeed > 0)
 				transform.position += Vector3.forward * (moveSpeed * Time.deltaTime);
+		}
+
+		protected virtual void FixedUpdate()
+		{
+			rigidbody.AddForce(Gravity * Physics.gravity, ForceMode.Acceleration);
 		}
 	}
 }
