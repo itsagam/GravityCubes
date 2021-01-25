@@ -1,3 +1,4 @@
+using Kit;
 using UnityEngine;
 
 namespace Game
@@ -14,13 +15,15 @@ namespace Game
 		{
 			transform = base.transform;
 			player = LevelManager.Instance.HumanPlayer.transform;
-			transform.position = player.position - transform.forward * Distance;
+			transform.position = GetNextPosition;
 		}
 
 		private void LateUpdate()
 		{
-			Vector3 newPosition = player.position - transform.forward * Distance;
+			Vector3 newPosition = GetNextPosition;
 			transform.position = Vector3.Lerp(transform.position, newPosition, MoveSpeed * Time.deltaTime);
 		}
+
+		private Vector3 GetNextPosition => new Vector3(player.position.x, transform.position.y, player.position.z - Distance);
 	}
 }
