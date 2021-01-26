@@ -26,7 +26,7 @@ namespace Game
 		{
 			if (! CanInput)
 				return;
-			
+
 			if (TransformGesture.DeltaPosition.x > 0)
 				SlideRight();
 			else if (TransformGesture.DeltaPosition.x < 0)
