@@ -7,7 +7,7 @@ namespace Game
 {
 	public class Button: MonoBehaviour
 	{
-		public float PressTime = 0.5f;
+		public float PressTime = 0.1f;
 		public AudioClip PressSound;
 		public UnityEvent OnPressed;
 		public BoxCollider Collider { get; protected set; }
