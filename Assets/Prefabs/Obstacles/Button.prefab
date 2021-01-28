@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69daf3cd6bd44019173631e65103477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PressTime: 0.5
+  PressTime: 0.25
   PressSound: {fileID: 8300000, guid: 7a1100040642cb949b7ed650c66fdb7c, type: 3}
   OnPressed:
     m_PersistentCalls:

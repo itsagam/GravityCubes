@@ -1,4 +1,3 @@
-using Kit;
 using UnityEngine;
 
 namespace Game
@@ -8,7 +7,6 @@ namespace Game
 		public float Distance = 10.0f;
 		public float MoveSpeed = 10.0f;
 
-		private float initialY = 0;
 		private new Transform transform;
 		private Player player;
 		private Transform playerTransform;
@@ -18,7 +16,6 @@ namespace Game
 			transform = base.transform;
 			player = LevelManager.Instance.HumanPlayer;
 			playerTransform = player.transform;
-			initialY = transform.position.y;
 			transform.position = GetNextPosition;
 		}
 

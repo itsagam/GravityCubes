@@ -28,9 +28,9 @@ namespace Game
 				return;
 
 			if (TransformGesture.DeltaPosition.x > 0)
-				SlideRight();
+				StrafeRight();
 			else if (TransformGesture.DeltaPosition.x < 0)
-				SlideLeft();
+				StrafeLeft();
 		}
 
 		protected void OnFlicked(object sender, EventArgs e)
@@ -67,10 +67,10 @@ namespace Game
 
 #if UNITY_EDITOR
 			if (Input.GetKey(KeyCode.A))
-				SlideLeft();
+				StrafeLeft();
 
 			if (Input.GetKey(KeyCode.D))
-				SlideRight();
+				StrafeRight();
 
 			if (Input.GetKeyDown(KeyCode.Space))
 			{

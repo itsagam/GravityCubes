@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Kit;
 using UnityEngine;
 
 namespace Game
@@ -16,7 +15,7 @@ namespace Game
 	{
 		public float MoveSpeed = 10.0f;
 		public float MoveTime = 2.0f;
-		public float SlideSpeed = 10.0f;
+		public float StrafeSpeed = 10.0f;
 		public float FlipTime = 0.5f;
 		public float FlipDistance = 1.0f;
 
@@ -57,17 +56,17 @@ namespace Game
 			moveSpeed = 0;
 		}
 
-		public void SlideLeft()
+		public void StrafeLeft()
 		{
-			Slide(-SlideSpeed);
+			Strafe(-StrafeSpeed);
 		}
 
-		public void SlideRight()
+		public void StrafeRight()
 		{
-			Slide(SlideSpeed);
+			Strafe(StrafeSpeed);
 		}
 
-		public void Slide(float movement)
+		public void Strafe(float movement)
 		{
 			transform.position += Gravity * Vector3.right * (movement * Time.deltaTime);
 		}
