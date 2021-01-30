@@ -34,7 +34,6 @@ namespace Game
 			if (obstacleIndex >= LevelManager.Instance.Obstacles.Length)
 				return;
 
-			//Vector3 position = transform.rotation * transform.position;
 			Vector3 position = Gravity * transform.position;
 			Obstacle obstacle = LevelManager.Instance.Obstacles[obstacleIndex];
 
@@ -44,7 +43,9 @@ namespace Game
 				float gravity = Gravity.eulerAngles.z;
 				float xDiff;
 				if (gravity == 270)
-					xDiff = position.x + obstacle.Position;
+					xDiff = obstacle.Position - position.x;
+				else if (gravity == 90)
+					xDiff = - position.x - obstacle.Position;
 				else
 					xDiff = position.x - obstacle.Position;
 
@@ -98,10 +99,14 @@ namespace Game
 			else if (gravity == 0 && obstacle.Gravity == 270)
 				return FlipDirection.Left;
 			// Edge cases for quicker movement
-			else if (gravity == 0 && obstacle.Gravity == 180 && (xPos < 0 && obstacle.Position > 0))
+			else if (gravity == 0 && obstacle.Gravity == 180 && (xPos <= 0 && obstacle.Position >= 0))
 				return FlipDirection.Left;
-			else if (gravity == 90 && obstacle.Gravity == 270 && (xPos < 0 && obstacle.Position < 0))
+			else if (gravity == 180 && obstacle.Gravity == 0 && (xPos >= 0 && obstacle.Position <= 0))
+				return FlipDirection.Right;
+			else if (gravity == 90 && obstacle.Gravity == 270 && (-xPos <= 0 && obstacle.Position <= 0))
 				return FlipDirection.Left;
+			else if (gravity == 270 && obstacle.Gravity == 90 && (xPos <= 0 && obstacle.Position <= 0))
+				return FlipDirection.Right;
 			// Otherwise right for greater gravity angle, left for lesser
 			else
 				return obstacle.Gravity > gravity ? FlipDirection.Right : FlipDirection.Left;

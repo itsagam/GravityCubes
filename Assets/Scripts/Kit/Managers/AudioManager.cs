@@ -145,7 +145,11 @@ namespace Kit
 		public static void Play(string group, AudioClip clip)
 		{
 			if (clip != null)
-				GetOrCreateGroup(group).PlayOneShot(clip);
+			{
+				AudioSource source = GetOrCreateGroup(group);
+				if (source != null)
+					source.PlayOneShot(clip);
+			}
 		}
 
 		/// <summary>Set and play background music.</summary>

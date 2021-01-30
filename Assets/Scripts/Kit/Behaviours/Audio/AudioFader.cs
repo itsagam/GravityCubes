@@ -94,7 +94,7 @@ namespace Kit.Behaviours
 		/// <remarks>Fades-out the audio before fading-in if an audio is already playing.</remarks>
 		public void Play(AudioClip clip)
 		{
-			if (clip == null)
+			if (clip == null || Audio == null)
 				return;
 
 			if (Audio.isPlaying)
