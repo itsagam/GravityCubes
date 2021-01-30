@@ -25,18 +25,18 @@ namespace Game.UI.Victory
 		{
 			if (HasWon)
 			{
-				WinnerText.text = "You win!";
+				WinnerText.text = "YOU WIN!";
 
 				int index = SceneDirector.ActiveIndex + 1;
 				if (index < SceneDirector.TotalScenes)
-					NextText.text = $"Round {index}";
+					NextText.text = $"ROUND {index - PlayButton.StartingIndex}";
 				else
-					NextText.text = "Finish";
+					NextText.text = "FINISH";
 			}
 			else
 			{
-				NextText.text = "Retry";
-				WinnerText.text = "You lost...";
+				NextText.text = "RETRY";
+				WinnerText.text = "YOU LOST...";
 			}
 		}
 

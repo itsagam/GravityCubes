@@ -1383,7 +1383,7 @@ MonoBehaviour:
   LevelEnd: {fileID: 5904075896753964913}
   Music: {fileID: 8300000, guid: b90284eb5b6ff7045acb6dee2e885a75, type: 3}
   ProgressUI: {fileID: 5904075896649834646}
-  VictoryWindow: {fileID: 6569161000747073498, guid: 27fc37b428a7be046bf406b441277905,
+  VictoryWindow: {fileID: 5593591069070532865, guid: f4f733bb8c569c24b91a71fd414e8ddb,
     type: 3}
 --- !u!1001 &1232736974690129619
 PrefabInstance:

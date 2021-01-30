@@ -8,7 +8,7 @@ namespace Game.UI.Menu
 {
 	public class PlayButton: MonoBehaviour
 	{
-		public int StartingIndex = 2;
+		public static int StartingIndex = 2;
 
 		private void Awake()
 		{

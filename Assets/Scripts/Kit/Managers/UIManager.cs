@@ -248,7 +248,10 @@ namespace Kit
 			canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 			canvas.sortingOrder = WindowCanvasOrder;
 
-			uiGO.AddComponent<CanvasScaler>();
+			CanvasScaler scaler =  uiGO.AddComponent<CanvasScaler>();
+			scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+			scaler.referenceResolution = new Vector2(1080, 1920);
+			scaler.matchWidthOrHeight = 1.0f;
 			uiGO.AddComponent<GraphicRaycaster>();
 
 			return canvas;
