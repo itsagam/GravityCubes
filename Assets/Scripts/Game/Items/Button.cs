@@ -8,6 +8,7 @@ namespace Game
 	public class Button: MonoBehaviour
 	{
 		public float PressTime = 0.1f;
+		public float PressDistance = 0.28f;
 		public AudioClip PressSound;
 		public UnityEvent OnPressed;
 		public BoxCollider Collider { get; protected set; }
@@ -28,9 +29,7 @@ namespace Game
 
 		protected virtual void PressButton()
 		{
-			Vector3 movement = new Vector3(0, -(Bounds.size.y + 0.01f));
-			movement = transform.rotation * movement;
-			transform.DOBlendableMoveBy(movement, PressTime);
+			transform.DOBlendableMoveBy(transform.up * -PressDistance, PressTime);
 			OnPressed?.Invoke();
 			AudioManager.Play(PressSound);
 		}

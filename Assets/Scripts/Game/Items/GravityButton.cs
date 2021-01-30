@@ -6,8 +6,9 @@ namespace Game
 	{
 		public void Switch()
 		{
+			Quaternion newGravity = Quaternion.Euler(0, 0, transform.eulerAngles.z);
 			foreach (Player player in LevelManager.Instance.AllPlayers)
-				player.ChangeGravity(Quaternion.Euler(0, 0, transform.eulerAngles.z));
+				player.ChangeGravity(newGravity);
 		}
 	}
 }

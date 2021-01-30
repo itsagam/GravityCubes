@@ -96,6 +96,12 @@ namespace Game
 			AudioManager.PlaySound(FlipSound);
 		}
 
+		public override void ChangeGravity(Quaternion newGravity)
+		{
+			base.ChangeGravity(newGravity);
+			LevelManager.Instance.Camera.transform.DORotateQuaternion(newGravity, FlipTime);
+		}
+
 		protected override void FlipGravity(Vector3 rotation)
 		{
 			base.FlipGravity(rotation);

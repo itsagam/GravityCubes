@@ -39,7 +39,7 @@ namespace Game
 
 			Vector3 position = Gravity * transform.position;
 			Obstacle obstacle = LevelManager.Instance.Obstacles[obstacleIndex];
-			
+
 			// Check for when to start strafing
 			if (position.z < obstacle.transform.position.z + StrafeDistance)
 			{
