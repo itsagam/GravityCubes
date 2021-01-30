@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3646cde06a0b4086a86aaa92162e3920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: -1.5
-  Gravity: 90
+  Position: 0
+  Gravity: 180
   Flips: 
 --- !u!1001 &5904075896429341617
 PrefabInstance:

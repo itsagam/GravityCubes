@@ -20,14 +20,15 @@ namespace Game
 		public float StrafeSpeed = 10.0f;
 		public float FlipTime = 0.5f;
 		public float FlipDistance = 1.0f;
+		public float FallVelocity = 0.5f;
 		public PlayerProgress ProgressPrefab;
 		public Color ProgressColor = Color.blue;
 
-		public Quaternion Gravity { get; private set; } = Quaternion.identity;
-		public Vector3 StartPosition { get; private set; }
-		public Bounds Bounds { get; private set; }
-		public bool IsMoving { get; private set; } = false;
-		public bool IsFlipping { get; private set; } = false;
+		public Quaternion Gravity { get; protected set; } = Quaternion.identity;
+		public Vector3 StartPosition { get; protected set; }
+		public Bounds Bounds { get; protected set; }
+		public bool IsMoving { get; protected set; } = false;
+		public bool IsFlipping { get; protected set; } = false;
 
 		protected new Transform transform;
 		protected new BoxCollider collider;
@@ -123,6 +124,11 @@ namespace Game
 			Gravity *= Quaternion.Euler(rotation);
 		}
 
+		public virtual void ChangeGravity(Quaternion newGravity)
+		{
+			Gravity = newGravity;
+		}
+
 		public bool CanFlipGravity(FlipDirection direction)
 		{
 			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
@@ -144,7 +150,18 @@ namespace Game
 
 		protected virtual void FixedUpdate()
 		{
+			//if (moveSpeed > 0)
+			//	rigidbody.MovePosition(rigidbody.position + Vector3.forward * (moveSpeed * Time.deltaTime));
 			rigidbody.AddForce(Gravity * Physics.gravity, ForceMode.Acceleration);
+		}
+
+		public virtual bool IsFalling
+		{
+			get
+			{
+				Vector3 velocity = Gravity * rigidbody.velocity;
+				return Mathf.Abs(velocity.y) > FallVelocity;
+			}
 		}
 	}
 }
