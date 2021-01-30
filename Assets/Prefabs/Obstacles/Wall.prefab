@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ade745062c33da4292a2c5ab6b0f8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RespawnDistance: 5
+  RespawnDistance: -15
