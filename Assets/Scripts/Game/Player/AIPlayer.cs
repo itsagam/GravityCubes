@@ -21,6 +21,12 @@ namespace Game
 		private int obstacleIndex = 0;
 		private int flipIndex = 0;
 
+		protected override void Awake()
+		{
+			base.Awake();
+			LevelManager.Instance.AIPlayers.Add(this);
+		}
+
 		protected override void Update()
 		{
 			base.Update();
@@ -28,8 +34,8 @@ namespace Game
 			if (obstacleIndex >= LevelManager.Instance.Obstacles.Length)
 				return;
 
-			Vector3 position = transform.rotation * transform.position;
-			//Vector3 position = Gravity * transform.position;
+			//Vector3 position = transform.rotation * transform.position;
+			Vector3 position = Gravity * transform.position;
 			Obstacle obstacle = LevelManager.Instance.Obstacles[obstacleIndex];
 
 			// Check for when to start strafing
@@ -84,7 +90,7 @@ namespace Game
 			}
 		}
 
-		private FlipDirection GetStrafeDirection(Obstacle obstacle, float gravity, float xPos)
+		private static FlipDirection GetStrafeDirection(Obstacle obstacle, float gravity, float xPos)
 		{
 			// Wrap around direction
 			if (gravity == 270 && obstacle.Gravity == 0)

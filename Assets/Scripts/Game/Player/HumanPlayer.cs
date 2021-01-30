@@ -18,6 +18,7 @@ namespace Game
 		protected override void Awake()
 		{
 			base.Awake();
+			LevelManager.Instance.HumanPlayer = this;
 			TransformGesture.Transformed += OnTransformed;
 			FlickGesture.Flicked += OnFlicked;
 		}

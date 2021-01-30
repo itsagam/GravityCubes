@@ -1,5 +1,6 @@
 using Kit;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.UI.Game
 {
@@ -11,7 +12,7 @@ namespace Game.UI.Game
 		private RectTransform parent;
 		private float startZ, endZ;
 
-		private void Awake()
+		private void Start()
 		{
 			transform = GetComponent<RectTransform>();
 			parent = (RectTransform) transform.parent;
@@ -28,6 +29,12 @@ namespace Game.UI.Game
 										startZ, endZ,
 										0, parent.rect.width);
 			transform.anchoredPosition = transform.anchoredPosition.SetX(newX);
+		}
+
+		public void SetColor(Color color)
+		{
+			Image image = GetComponent<Image>();
+			image.color = color;
 		}
 	}
 }

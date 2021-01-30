@@ -14,8 +14,8 @@ namespace Game
 		private void Awake()
 		{
 			transform = base.transform;
-			player = LevelManager.Instance.AIPlayers[0];
-			//player = LevelManager.Instance.HumanPlayer;
+			//player = LevelManager.Instance.AIPlayers[0];
+			player = LevelManager.Instance.HumanPlayer;
 			playerTransform = player.transform;
 			transform.position = GetNextPosition;
 		}

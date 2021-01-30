@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Game.UI.Game;
 using Kit;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ namespace Game
 		public float StrafeSpeed = 10.0f;
 		public float FlipTime = 0.5f;
 		public float FlipDistance = 1.0f;
+		public PlayerProgress ProgressPrefab;
+		public Color ProgressColor = Color.blue;
 
 		public Quaternion Gravity { get; private set; } = Quaternion.identity;
 		public Vector3 StartPosition { get; private set; }
@@ -38,6 +41,14 @@ namespace Game
 			rigidbody = GetComponent<Rigidbody>();
 			Bounds = collider.bounds;
 			StartPosition = transform.position;
+			SetupUI();
+		}
+
+		protected virtual void SetupUI()
+		{
+			PlayerProgress progress = Instantiate(ProgressPrefab, LevelManager.Instance.ProgressUI);
+			progress.SetColor(ProgressColor);
+			progress.Player = this;
 		}
 
 		public void StartMoving()
@@ -117,7 +128,8 @@ namespace Game
 			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
 			{
 				Vector3 end = Gravity * new Vector3(direction == FlipDirection.Left ? -FlipDistance : FlipDistance, 0, 0);
-				if (Physics.Linecast(transform.position, transform.position + end, out RaycastHit hit))
+				if (Physics.Linecast(transform.position, transform.position + end, out RaycastHit hit) &&
+					hit.transform.gameObject.layer == LevelManager.EnvironmentLayer)
 					return true;
 			}
 

@@ -130,4 +130,7 @@ MonoBehaviour:
   StrafeSpeed: 10
   FlipTime: 0.5
   FlipDistance: 0.5
+  ProgressPrefab: {fileID: 3964965827666436965, guid: 39b0c71f2cdc3924cbba84a6569c9459,
+    type: 3}
+  ProgressColor: {r: 1, g: 0.37254903, b: 0.41568628, a: 1}
   StrafeDistance: 1

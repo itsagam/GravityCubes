@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Kit;
+using Kit.Containers;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -15,18 +16,22 @@ namespace Game
 
 	public class LevelManager: Singleton<LevelManager>
 	{
+		public static int EnvironmentLayer;
+
 		public CameraManager Camera;
-		public HumanPlayer HumanPlayer;
-		public AIPlayer[] AIPlayers;
 		public float EndDelay = 2.0f;
 		public EndVolume LevelEnd;
 		public AudioClip Music;
+		public RectTransform ProgressUI;
 
+		public HumanPlayer HumanPlayer { get; set; }
+		public List<AIPlayer> AIPlayers { get; } = new List<AIPlayer>();
 		public Obstacle[] Obstacles { get; private set; }
 		public LevelState State = LevelState.Waiting;
 
 		private void Awake()
 		{
+			EnvironmentLayer = LayerMask.NameToLayer("Environment");
 			Obstacles = FindObjectsOfType<Obstacle>();
 			Obstacles.Sort((o1, o2) => (int) (o1.transform.position.z - o2.transform.position.z));
 		}
