@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Game.UI.Victory;
 using Kit;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -22,11 +23,12 @@ namespace Game
 		public EndVolume LevelEnd;
 		public AudioClip Music;
 		public RectTransform ProgressUI;
+		public VictoryWindow VictoryWindow;
 
 		public HumanPlayer HumanPlayer { get; set; }
 		public List<AIPlayer> AIPlayers { get; } = new List<AIPlayer>();
 		public Obstacle[] Obstacles { get; private set; }
-		public LevelState State = LevelState.Waiting;
+		public LevelState State { get; private set; } = LevelState.Waiting;
 
 		private void Awake()
 		{
@@ -51,15 +53,15 @@ namespace Game
 			State = LevelState.Playing;
 		}
 
-		public void EndLevel()
+		public void EndLevel(Player player)
 		{
 			if (State != LevelState.Playing)
 				return;
 
-			foreach (Player player in AllPlayers)
-				player.StopMoving();
+			foreach (Player current in AllPlayers)
+				current.StopMoving();
 			State = LevelState.Ended;
-			ControlHelper.Delay(EndDelay, () => SceneDirector.ReloadScene());
+			ControlHelper.Delay(EndDelay, () => UIManager.Show(VictoryWindow, player));
 		}
 
 		public IEnumerable<Player> AllPlayers => AIPlayers.Union(EnumerableExtensions.One((Player) HumanPlayer));

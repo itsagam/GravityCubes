@@ -230,6 +230,13 @@ namespace Kit
 		/// <summary>Name of the active scene.</summary>
 		public static string ActiveName => ActiveScene.name;
 
+
+		/// <summary>Index of the active scene.</summary>
+		public static int ActiveIndex => ActiveScene.buildIndex;
+
+		/// <summary>Total number of scenes.</summary>
+		public static int TotalScenes => SceneManager.sceneCountInBuildSettings;
+
 		/// <summary>Returns whether the active scene is a particular one.</summary>
 		public static bool IsScene(string name)
 		{

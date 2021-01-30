@@ -20,8 +20,8 @@ namespace Game
 				return;
 
 			player.StopMoving();
-			if (player is HumanPlayer)
-				LevelManager.Instance.EndLevel();
+			//if (player is HumanPlayer)
+				LevelManager.Instance.EndLevel(player);
 		}
 	}
 }

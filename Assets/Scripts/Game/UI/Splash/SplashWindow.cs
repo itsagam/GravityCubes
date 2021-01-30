@@ -91,7 +91,7 @@ namespace Game.UI.Splash
 
 		private void QueueDataTasks()
 		{
-			QueueTask("Loading data...", DataManager.LoadData, 10);
+			//QueueTask("Loading data...", DataManager.LoadData, 10);
 		}
 
 #if MODDING

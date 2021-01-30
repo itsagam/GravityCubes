@@ -102,6 +102,7 @@ namespace Kit.UI
 				return true;
 
 			State = WindowState.Showing;
+			Data = data;
 
 			OnShowing();
 			Showing.Invoke();
@@ -109,7 +110,6 @@ namespace Kit.UI
 			if (Track)
 				UIManager.Windows.Add(this);
 
-			Data = data;
 			gameObject.SetActive(true);
 
 			AudioManager.PlayUI(ShowSound);
