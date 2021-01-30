@@ -14,7 +14,8 @@ namespace Game
 		private void Awake()
 		{
 			transform = base.transform;
-			player = LevelManager.Instance.HumanPlayer;
+			player = LevelManager.Instance.AIPlayers[0];
+			//player = LevelManager.Instance.HumanPlayer;
 			playerTransform = player.transform;
 			transform.position = GetNextPosition;
 		}
@@ -33,9 +34,9 @@ namespace Game
 				float gravity = player.Gravity.eulerAngles.z;
 				Vector3 nextPosition = Vector3.zero;
 				if (gravity == 0)
-					nextPosition = new Vector3(playerPosition.x, 3.0f);
+					nextPosition = new Vector3(playerPosition.x, 0.5f);
 				else if (gravity == 180)
-					nextPosition = new Vector3(playerPosition.x, 1.0f);
+					nextPosition = new Vector3(playerPosition.x, -0.5f);
 				else if (gravity == 90)
 					nextPosition = new Vector3(-0.5f, playerPosition.y);
 				else if (gravity == 270)

@@ -65,7 +65,7 @@ namespace Game
 			if (! CanInput)
 				return;
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 			if (Input.GetKey(KeyCode.A))
 				StrafeLeft();
 
@@ -92,14 +92,14 @@ namespace Game
 		public override void Flip(FlipDirection direction)
 		{
 			base.Flip(direction);
-			AudioManager.Play(FlipSound);
+			AudioManager.PlaySound(FlipSound);
 		}
 
 		protected override void FlipGravity(Vector3 rotation)
 		{
 			base.FlipGravity(rotation);
 			LevelManager.Instance.Camera.transform.DORotate(Gravity.eulerAngles, FlipTime);
-			AudioManager.Play(FlipGravitySound);
+			AudioManager.PlaySound(FlipGravitySound);
 		}
 
 		public bool CanInput => LevelManager.Instance.State == LevelState.Playing && IsMoving;

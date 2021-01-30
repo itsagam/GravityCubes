@@ -22,7 +22,7 @@ namespace Game
 			transform.DOKill();
 			transform.DOMove(IsInitial ? OtherPosition : InitialPosition, SwitchTime);
 			IsInitial = !IsInitial;
-			AudioManager.Play(SwitchSound);
+			AudioManager.PlaySound(SwitchSound);
 		}
 	}
 }

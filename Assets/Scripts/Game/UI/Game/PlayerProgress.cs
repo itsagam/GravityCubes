@@ -9,23 +9,23 @@ namespace Game.UI.Game
 
 		private new RectTransform transform;
 		private RectTransform parent;
-		private float startX, endX;
+		private float startZ, endZ;
 
 		private void Awake()
 		{
 			transform = GetComponent<RectTransform>();
 			parent = (RectTransform) transform.parent;
-			startX = Player.StartPosition.z;
-			endX = LevelManager.Instance.LevelEnd.transform.position.z;
+			startZ = Player.StartPosition.z;
+			endZ = LevelManager.Instance.LevelEnd.transform.position.z;
 		}
 
 		private void Update()
 		{
-			if (!Player.IsMoving)
+			if (LevelManager.Instance.State != LevelState.Playing || !Player.IsMoving)
 				return;
 
 			float newX = MathHelper.Map(Player.transform.position.z,
-										startX, endX,
+										startZ, endZ,
 										0, parent.rect.width);
 			transform.anchoredPosition = transform.anchoredPosition.SetX(newX);
 		}

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Kit;
 using UnityEngine;
 
 namespace Game
@@ -22,7 +23,8 @@ namespace Game
 		public Quaternion Gravity { get; private set; } = Quaternion.identity;
 		public Vector3 StartPosition { get; private set; }
 		public Bounds Bounds { get; private set; }
-		public bool IsMoving { get; private set; }
+		public bool IsMoving { get; private set; } = false;
+		public bool IsFlipping { get; private set; } = false;
 
 		protected new Transform transform;
 		protected new BoxCollider collider;
@@ -73,6 +75,9 @@ namespace Game
 
 		public virtual void Flip(FlipDirection direction)
 		{
+			//if (IsFlipping)
+			//	return;
+
 			float angle = 90.0f;
 			Vector3 rotation = Vector3.zero;
 			switch (direction)
@@ -93,19 +98,30 @@ namespace Game
 					rotation = new Vector3(-angle, 0, 0);
 					break;
 			}
-			transform.DOBlendableRotateBy(Gravity * rotation, FlipTime);
 
-			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
-			{
-				Vector3 end = Gravity * new Vector3(direction == FlipDirection.Left ? -FlipDistance : FlipDistance, 0, 0);
-				if (Physics.Linecast(transform.position, transform.position + end, out RaycastHit hit))
-					FlipGravity(-rotation);
-			}
+			IsFlipping = true;
+			transform.DOBlendableRotateBy(Gravity * rotation, FlipTime);
+			ControlHelper.Delay(FlipTime, () => IsFlipping = false);
+
+			if (CanFlipGravity(direction))
+				FlipGravity(-rotation);
 		}
 
 		protected virtual void FlipGravity(Vector3 rotation)
 		{
 			Gravity *= Quaternion.Euler(rotation);
+		}
+
+		public bool CanFlipGravity(FlipDirection direction)
+		{
+			if (direction == FlipDirection.Left || direction == FlipDirection.Right)
+			{
+				Vector3 end = Gravity * new Vector3(direction == FlipDirection.Left ? -FlipDistance : FlipDistance, 0, 0);
+				if (Physics.Linecast(transform.position, transform.position + end, out RaycastHit hit))
+					return true;
+			}
+
+			return false;
 		}
 
 		protected virtual void Update()

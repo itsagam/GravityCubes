@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 12
   MoveTime: 2
-  SlideSpeed: 7.5
+  StrafeSpeed: 10
   FlipTime: 0.5
-  FlipDistance: 1
+  FlipDistance: 0.5
+  StrafeDistance: 1

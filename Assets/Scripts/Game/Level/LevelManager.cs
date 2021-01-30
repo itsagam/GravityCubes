@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Kit;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Game
@@ -21,7 +22,14 @@ namespace Game
 		public EndVolume LevelEnd;
 		public AudioClip Music;
 
+		public Obstacle[] Obstacles { get; private set; }
 		public LevelState State = LevelState.Waiting;
+
+		private void Awake()
+		{
+			Obstacles = FindObjectsOfType<Obstacle>();
+			Obstacles.Sort((o1, o2) => (int) (o1.transform.position.z - o2.transform.position.z));
+		}
 
 		private void Start()
 		{
