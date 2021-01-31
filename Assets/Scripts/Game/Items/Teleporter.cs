@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Kit;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game
@@ -9,6 +10,7 @@ namespace Game
 		public bool ChangeGravity = false;
 		[ShowIf("ChangeGravity")]
 		public float NewGravity = 0;
+		public AudioClip TeleportSound;
 
 		protected void OnTriggerEnter(Collider other)
 		{
@@ -19,6 +21,7 @@ namespace Game
 			player.transform.position = Destination;
 			if (ChangeGravity)
 				player.ChangeGravity(Quaternion.Euler(0, 0, NewGravity));
+			AudioManager.PlaySound(TeleportSound);
 		}
 	}
 }

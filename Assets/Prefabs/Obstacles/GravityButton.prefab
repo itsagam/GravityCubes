@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressTime: 0.25
-  PressSound: {fileID: 8300000, guid: 7a1100040642cb949b7ed650c66fdb7c, type: 3}
+  PressDistance: 0.28
+  PressSound: {fileID: 8300000, guid: 28652e56a152b1c44915381a02806320, type: 3}
   OnPressed:
     m_PersistentCalls:
       m_Calls:

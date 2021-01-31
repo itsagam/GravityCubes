@@ -1,10 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
-using Game.UI.Menu;
+﻿using Game.UI.Menu;
 using Kit;
 using Kit.UI;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.UI.Victory
@@ -14,6 +11,8 @@ namespace Game.UI.Victory
 		public Text WinnerText;
 		public UnityEngine.UI.Button NextButton;
 		public Text NextText;
+		public AudioClip WinSound;
+		public AudioClip LoseSound;
 
 		protected override void Awake()
 		{
@@ -25,6 +24,7 @@ namespace Game.UI.Victory
 		{
 			if (HasWon)
 			{
+				AudioManager.PlaySound(WinSound);
 				WinnerText.text = "YOU WIN!";
 
 				int index = SceneDirector.ActiveIndex + 1;
@@ -35,6 +35,7 @@ namespace Game.UI.Victory
 			}
 			else
 			{
+				AudioManager.PlaySound(LoseSound);
 				NextText.text = "RETRY";
 				WinnerText.text = "YOU LOST...";
 			}

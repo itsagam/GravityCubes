@@ -111,3 +111,4 @@ MonoBehaviour:
   Destination: {x: 0, y: 0, z: 10}
   ChangeGravity: 0
   NewGravity: 90
+  TeleportSound: {fileID: 8300000, guid: 069512ae06fb0354194a12e44c1bc31b, type: 3}
