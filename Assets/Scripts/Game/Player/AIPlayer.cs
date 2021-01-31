@@ -31,7 +31,7 @@ namespace Game
 		{
 			base.Update();
 
-			if (obstacleIndex >= LevelManager.Instance.Obstacles.Length)
+			if (obstacleIndex >= LevelManager.Instance.Obstacles.Count)
 				return;
 
 			if (IsFalling)

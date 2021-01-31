@@ -29,7 +29,7 @@ namespace Game.UI.Victory
 
 				int index = SceneDirector.ActiveIndex + 1;
 				if (index < SceneDirector.TotalScenes)
-					NextText.text = $"ROUND {index - PlayButton.StartingIndex}";
+					NextText.text = $"LEVEL {index - PlayButton.StartingIndex}";
 				else
 					NextText.text = "FINISH";
 			}

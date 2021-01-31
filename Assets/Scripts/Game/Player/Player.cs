@@ -15,12 +15,16 @@ namespace Game
 
 	public abstract class Player: MonoBehaviour
 	{
+		public const float OutOfBoundsDistance = 10.0f;
+
 		public float MoveSpeed = 10.0f;
 		public float MoveTime = 2.0f;
 		public float StrafeSpeed = 10.0f;
 		public float FlipTime = 0.5f;
 		public float FlipDistance = 1.0f;
 		public float FallVelocity = 0.5f;
+		public float OutOfBoundsResetDistance = -20.0f;
+		public float OutOfBoundsResetTime = 0.0f;
 		public PlayerProgress ProgressPrefab;
 		public Color ProgressColor = Color.blue;
 
@@ -146,6 +150,21 @@ namespace Game
 		{
 			if (moveSpeed > 0)
 				transform.position += Vector3.forward * (moveSpeed * Time.deltaTime);
+
+
+			if (!IsMoving)
+				return;
+			Vector3 position = transform.position;
+			if (Mathf.Abs(position.x) > OutOfBoundsDistance || Mathf.Abs(position.y) > OutOfBoundsDistance)
+			{
+				StopMovingImmediate();
+				ControlHelper.Delay(OutOfBoundsResetTime,
+									() =>
+									{
+										transform.position = new Vector3(0, 0, position.z + OutOfBoundsResetDistance);
+										StartMoving();
+									});
+			}
 		}
 
 		protected virtual void FixedUpdate()

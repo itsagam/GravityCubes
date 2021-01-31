@@ -28,22 +28,31 @@ namespace Game
 
 		public HumanPlayer HumanPlayer { get; set; }
 		public List<AIPlayer> AIPlayers { get; } = new List<AIPlayer>();
-		public Obstacle[] Obstacles { get; private set; }
+		public List<Obstacle> Obstacles { get; private set; }
 		public LevelState State { get; private set; } = LevelState.Waiting;
 
 		private void Awake()
 		{
 			EnvironmentLayer = LayerMask.NameToLayer("Environment");
-			Obstacles = FindObjectsOfType<Obstacle>();
-			Array.Sort(Obstacles, new DistanceComparer());
+			Obstacles = FindObjectsOfType<Obstacle>().ToList();
+			SortObstacles();
 		}
 
-		public class DistanceComparer: IComparer
+		public void AddObstacle(Obstacle obstacle)
 		{
-			public int Compare(object o1, object o2)
-			{
-				return (int) (((Component) o1).transform.position.z - ((Component) o2).transform.position.z);
-			}
+			Obstacles.Add(obstacle);
+			SortObstacles();
+		}
+
+		public void RemoveObstacle(Obstacle obstacle)
+		{
+			Obstacles.Remove(obstacle);
+			SortObstacles();
+		}
+
+		public void SortObstacles()
+		{
+			Obstacles.Sort((o1, o2) => (int) (o1.transform.position.z - o2.transform.position.z));
 		}
 
 		private void Start()
