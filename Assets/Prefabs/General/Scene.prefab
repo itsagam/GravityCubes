@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a5cd463dd74cdca28c8fbea28a7a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 7
+  Distance: 6
   MoveSpeed: 10
 --- !u!114 &5904075896458523725
 MonoBehaviour:
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5904075896458523718}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b200ceda39a40af43bbb16a879f0791f, type: 3}
   m_Name: 
@@ -308,7 +308,7 @@ MonoBehaviour:
   _blurTolerance: -4.6
   _upsampleTolerance: -12
   _rejectionFalloff: 10
-  _strength: 0.2
+  _strength: 0.15
   _debug: 0
   _downsample1Compute: {fileID: 7200000, guid: 659dc93a3764e164e8dafb2061ff317b, type: 3}
   _downsample2Compute: {fileID: 7200000, guid: dc4dd2f3a1157884e95a081b25b5731d, type: 3}
@@ -330,7 +330,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 5904075896458523723}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 2
@@ -340,7 +340,7 @@ MonoBehaviour:
     stationaryBlending: 0.95
     motionBlending: 0.85
   subpixelMorphologicalAntialiasing:
-    quality: 2
+    quality: 0
   fastApproximateAntialiasing:
     fastMode: 0
     keepAlpha: 0
