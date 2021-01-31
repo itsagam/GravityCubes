@@ -25,7 +25,7 @@ namespace Game.UI.Victory
 			if (HasWon)
 			{
 				AudioManager.PlaySound(WinSound);
-				WinnerText.text = "YOU WIN!";
+				WinnerText.text = "LEVEL FINISHED!";
 
 				int index = SceneDirector.ActiveIndex + 1;
 				if (index < SceneDirector.TotalScenes)
@@ -37,7 +37,7 @@ namespace Game.UI.Victory
 			{
 				AudioManager.PlaySound(LoseSound);
 				NextText.text = "RETRY";
-				WinnerText.text = "YOU LOST...";
+				WinnerText.text = "TOO SLOW!";
 			}
 		}
 

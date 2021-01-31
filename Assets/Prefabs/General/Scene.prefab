@@ -888,7 +888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5904075896777270961
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   Camera: {fileID: 5904075896458523722}
   EndDelay: 1.5
   LevelEnd: {fileID: 5904075896753964913}
-  Music: {fileID: 8300000, guid: b90284eb5b6ff7045acb6dee2e885a75, type: 3}
+  Music: {fileID: 8300000, guid: 95393a759408cf0499da6e2d9e5db24d, type: 3}
   ProgressUI: {fileID: 5904075896649834646}
   VictoryWindow: {fileID: 5593591069070532865, guid: f4f733bb8c569c24b91a71fd414e8ddb,
     type: 3}

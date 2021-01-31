@@ -1,8 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Game.UI.Victory;
 using Kit;
-using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Game
@@ -34,7 +35,15 @@ namespace Game
 		{
 			EnvironmentLayer = LayerMask.NameToLayer("Environment");
 			Obstacles = FindObjectsOfType<Obstacle>();
-			Obstacles.Sort((o1, o2) => (int) (o1.transform.position.z - o2.transform.position.z));
+			Array.Sort(Obstacles, new DistanceComparer());
+		}
+
+		public class DistanceComparer: IComparer
+		{
+			public int Compare(object o1, object o2)
+			{
+				return (int) (((Component) o1).transform.position.z - ((Component) o2).transform.position.z);
+			}
 		}
 
 		private void Start()
