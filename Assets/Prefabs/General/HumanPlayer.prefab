@@ -131,6 +131,8 @@ MonoBehaviour:
   FlipTime: 0.5
   FlipDistance: 1
   FallVelocity: 0.25
+  RespawnDelay: 2
+  RespawnDistance: -5
   OutOfBoundsResetDistance: -50
   OutOfBoundsResetTime: 0
   ProgressPrefab: {fileID: 3964965827666436965, guid: 39b0c71f2cdc3924cbba84a6569c9459,

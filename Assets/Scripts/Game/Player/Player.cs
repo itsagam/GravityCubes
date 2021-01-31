@@ -23,6 +23,8 @@ namespace Game
 		public float FlipTime = 0.5f;
 		public float FlipDistance = 1.0f;
 		public float FallVelocity = 0.5f;
+		public float RespawnDelay = 0.0f;
+		public float RespawnDistance = -5.0f;
 		public float OutOfBoundsResetDistance = -20.0f;
 		public float OutOfBoundsResetTime = 0.0f;
 		public PlayerProgress ProgressPrefab;
