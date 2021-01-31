@@ -278,8 +278,8 @@ MonoBehaviour:
   WinnerText: {fileID: 1492383957639216403}
   NextButton: {fileID: 5593591067338093150}
   NextText: {fileID: 7461285395780160690}
-  WinSound: {fileID: 0}
-  LoseSound: {fileID: 0}
+  WinSound: {fileID: 8300000, guid: 3545db4affefac24cb1258d4ae563862, type: 3}
+  LoseSound: {fileID: 8300000, guid: 9d521452fa61aac48810fd0b1445869d, type: 3}
 --- !u!114 &2996451514251150220
 MonoBehaviour:
   m_ObjectHideFlags: 0

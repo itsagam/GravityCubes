@@ -133,7 +133,7 @@ MonoBehaviour:
   FallVelocity: 0.25
   ProgressPrefab: {fileID: 3964965827666436965, guid: 39b0c71f2cdc3924cbba84a6569c9459,
     type: 3}
-  ProgressColor: {r: 0.37254903, g: 0.60784316, b: 1, a: 1}
+  ProgressColor: {r: 0.37254903, g: 0.60784316, b: 1, a: 0.6666667}
   FlipSound: {fileID: 8300000, guid: eae2f63774100184ba24ad621042bf96, type: 3}
   FlipGravitySound: {fileID: 8300000, guid: 069512ae06fb0354194a12e44c1bc31b, type: 3}
   FlickGesture: {fileID: 0}
