@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 809611346102648462}
   - component: {fileID: 1813487546}
   - component: {fileID: -628142158208885682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GravityButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

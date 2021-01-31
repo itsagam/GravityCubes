@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 809611346102648461}
   - component: {fileID: 809611346102648462}
   - component: {fileID: 1813487546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressTime: 0.25
+  PressDistance: 0.28
   PressSound: {fileID: 8300000, guid: 7a1100040642cb949b7ed650c66fdb7c, type: 3}
   OnPressed:
     m_PersistentCalls:

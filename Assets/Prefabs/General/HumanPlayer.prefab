@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8458537557641184492}
   - component: {fileID: 8458537557641184499}
   - component: {fileID: 8458537557641184496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HumanPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   MoveTime: 2
-  StrafeSpeed: 10
+  StrafeSpeed: 5
   FlipTime: 0.5
   FlipDistance: 1
   FallVelocity: 0.25

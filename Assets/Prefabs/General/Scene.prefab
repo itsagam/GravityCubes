@@ -203,10 +203,9 @@ GameObject:
   - component: {fileID: 5904075896458523720}
   - component: {fileID: 5904075896458523721}
   - component: {fileID: 5904075896458523722}
-  - component: {fileID: 5904075896458523725}
   - component: {fileID: 7358250633873780408}
   - component: {fileID: 6224298426625029756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -292,29 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 6
   MoveSpeed: 10
---- !u!114 &5904075896458523725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904075896458523718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b200ceda39a40af43bbb16a879f0791f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _noiseFilterTolerance: 0
-  _blurTolerance: -4.6
-  _upsampleTolerance: -12
-  _rejectionFalloff: 10
-  _strength: 0.15
-  _debug: 0
-  _downsample1Compute: {fileID: 7200000, guid: 659dc93a3764e164e8dafb2061ff317b, type: 3}
-  _downsample2Compute: {fileID: 7200000, guid: dc4dd2f3a1157884e95a081b25b5731d, type: 3}
-  _renderCompute: {fileID: 7200000, guid: e49d5d8e57b0515469bb1ef4bf07b8dd, type: 3}
-  _upsampleCompute: {fileID: 7200000, guid: 2c3e5f47f9b262047ae010f239705186, type: 3}
-  _blitShader: {fileID: 4800000, guid: 532f9473ecfa16148a1ecdb3b72a44e8, type: 3}
 --- !u!114 &7358250633873780408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +306,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 5904075896458523723}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 2
@@ -518,10 +494,10 @@ RectTransform:
   m_Father: {fileID: 5904075896732623039}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 646.02045}
-  m_SizeDelta: {x: -100.00001, y: -1366.0413}
+  m_AnchoredPosition: {x: 0, y: -64.97955}
+  m_SizeDelta: {x: -100.00001, y: 55.95874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5904075896649834648
 CanvasRenderer:
@@ -1015,8 +991,8 @@ MonoBehaviour:
   sendStateChangeEvents: 0
   requireGestureToFail: {fileID: 0}
   friendlyGestures: []
-  flickTime: 0.05
-  minDistance: 1
+  flickTime: 0.1
+  minDistance: 0.5
   movementThreshold: 0.5
   direction: 0
 --- !u!114 &5904075896777270960
@@ -1491,7 +1467,7 @@ PrefabInstance:
     - target: {fileID: 4680631996089048813, guid: e6e6cdf280324394aaeb703f25170e1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.461
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4680631996089048813, guid: e6e6cdf280324394aaeb703f25170e1d,
         type: 3}
@@ -1581,7 +1557,7 @@ PrefabInstance:
     - target: {fileID: 8458537557641184497, guid: 692dab38950b02143adad46a3fe312ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.865
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8458537557641184497, guid: 692dab38950b02143adad46a3fe312ef,
         type: 3}
