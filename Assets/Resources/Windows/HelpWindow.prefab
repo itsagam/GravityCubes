@@ -302,9 +302,9 @@ PrefabInstance:
     - target: {fileID: 367683173978342641, guid: 19fce6d7b3d3a024b80e644fec093b45,
         type: 3}
       propertyPath: m_Text
-      value: "\u2192 Swipe Left or right to strafe.\n\n\u2192 Flick Up/Down/Left/Right
-        to flip in that direction.\n\n\u2192 Flick Left or Right while touching a
-        corner to switch gravity.\n\n\u2192 Use traps to slow down your opponent."
+      value: "\u2192 Swipe Left or Right to strafe.\n\n\u2192 Flick Up/Down/Left/Right
+        to flip in that direction.\n\n\u2192 Flip in a corner to switch gravity.\n\n\u2192
+        Use Traps to slow down your opponent."
       objectReference: {fileID: 0}
     - target: {fileID: 367683173978342641, guid: 19fce6d7b3d3a024b80e644fec093b45,
         type: 3}
